@@ -134,6 +134,13 @@ Route::get('/view_cities/{prov_id?}','LocationsController@list_cities');// displ
 Route::any('add_city/{city_id?}/{prov_id?}','LocationsController@add_city');
 Route::any('/add_province/{prov_id?}','LocationsController@add_province');
 Route::get('/delete_city/{city_id}/{prov_id}', 'LocationsController@deletecity');
+#Petty Cash Categories
+Route::resource('petty_config', 'CategoryController', ['middleware' => 'auth']);
+Route::any('add_sat_cats','CategoryController@addNewRecord');
+Route::any('add_category/{cat_id?}','CategoryController@createCategory');
+Route::any('add_subcategory/{subcat_id?}/{cat_id?}','CategoryController@createSubcategory');
+Route::any('view_subcategories/{subcat_id?}/{cat_id?}','CategoryController@listSubcategory');
+Route::get('/delete_category/{cat_id}', 'CategoryController@deletecategory');
 
 #Purchase Order Module
 Route::any('/purchase_order/{corp_id}/{city_id}/{id?}', 'PurchaseOrderController@purchase_order');
